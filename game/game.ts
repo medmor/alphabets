@@ -3,16 +3,27 @@ import * as PIXI from "pixi.js"
 import Alpha from "./alpha"
 import Input from "./input"
 
+class Game extends PIXI.Application{
 
-const game = new PIXI.Application({width: 600, height: 400, backgroundColor: 0x00BDF0})
-const alpha = new Alpha(300, 100)
-game.stage.addChild(alpha)
+  alpha = new Alpha(300, -100)
+  input = new Input(this.inputHandler.bind(this))
 
-const input = new Input(alpha.inputHandler.bind(alpha))
+  constructor(){
+    super({width: 600, height: 400, backgroundColor: 0x00BDF0})
+    this.stage.addChild(this.alpha)
 
-game.ticker.add(()=>{
-  alpha.fall(1)
-})
-game.ticker.start()
+    this.ticker.add(this.loop.bind(this))
+    this.ticker.start()
+  }
 
-export default game
+  loop(){
+    this.alpha.fall(2)
+  }
+
+  inputHandler(event: KeyboardEvent){
+    this.alpha.setAlpha()
+  }
+
+}
+
+export default new Game()

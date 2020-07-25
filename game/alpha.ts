@@ -11,6 +11,7 @@ class Alpha extends PIXI.Text {
 
   fall(speed: number){
     this.y += speed
+    if(this.y > 410) this.setAlpha()
   }
 
   setAlpha(){
@@ -21,10 +22,6 @@ class Alpha extends PIXI.Text {
 
   randomAlpha(){
     this.text = this.alphabets[Math.floor(Math.random() * 26)]
-  }
-
-  inputHandler(event: KeyboardEvent){
-    this.setAlpha()
   }
 
   isEqual= (keycode: number): boolean => this.text === this.alphabets[keycode - 65]  
