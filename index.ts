@@ -1,10 +1,8 @@
 // Import stylesheets
 import './style.css';
-
-import * as pixi from "pixi.js"
-
+import game from "./game/game"
 
 
 // Write TypeScript code!
 const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+appDiv.appendChild(game)
