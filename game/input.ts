@@ -1,23 +1,24 @@
 export default class Input {
-  constructor(){
 
+  handler:(event: KeyboardEvent)=> void
+
+  constructor(_handler: (event: KeyboardEvent)=>void){
+    this.handler = _handler
     window.focus()
+    this.subscribe(this.handler)
 
+  }
+
+  
+  subscribe(handler: (event: KeyboardEvent)=>void){
     window.addEventListener(
-      "keyup", this.upHandler, false
+      "keyup", handler, false
     );
   }
 
-  //The `upHandler`
-  upHandler = (event: KeyboardEvent) => {
-    console.log(event.keyCode)
-  };
-
-  
-
   // Detach event listeners
-  unsubscribe = () => {
-    window.removeEventListener("keyup", this.upHandler);
+  unsubscribe () {
+    window.removeEventListener("keyup", this.handler);
   };
   
 }

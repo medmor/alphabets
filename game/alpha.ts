@@ -1,26 +1,33 @@
 import * as PIXI from "pixi.js"
 
 class Alpha extends PIXI.Text {
+
   alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  constructor(text: string, public startX: number, public startY: number){
-    super(text, {color:0x00});
-    this.x = startX
-    this.y = startY
+
+  constructor(public startX: number, public startY: number){
+    super("", {color:0x00});
+    this.setAlpha()
   }
 
   fall(speed: number){
     this.y += speed
   }
-  reset(){
+
+  setAlpha(){
     this.x = this.startX
     this.y = this.startY
+    this.randomAlpha()
   }
+
   randomAlpha(){
-    this.text = this.alphabets[Math.random() * 26]
+    this.text = this.alphabets[Math.floor(Math.random() * 26)]
   }
-  isEqual(keycode: number): boolean{
-    return this.text === this.alphabets[keycode]
+
+  inputHandler(event: KeyboardEvent){
+    this.setAlpha()
   }
+
+  isEqual= (keycode: number): boolean => this.text === this.alphabets[keycode - 65]  
 
 }
 
