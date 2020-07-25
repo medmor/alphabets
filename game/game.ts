@@ -3,6 +3,7 @@ import * as PIXI from "pixi.js"
 import Alpha from "./alpha"
 import Input from "./input"
 
+
 class Game extends PIXI.Application{
 
   alpha = new Alpha(300, -100)
