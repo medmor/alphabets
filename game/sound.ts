@@ -5,11 +5,11 @@ export default class SoundManager{
 
   playMusic(){
     this.music = new Howl({
-      src: ['https://funksyou.com/fileDownload/Songs/128/13080.mp3'],
+      src: ['https://github.com/medmor/alphabets/raw/master/sounds/bensoundMusic.mp3'],
+      loop: true
       });
-    this.music.on('load', ()=>{console.log(5)})
-    this.music.play();
-    console.log(this.music)
+    this.music.on('load', ()=>{this.music.play();})
+    
   }
 }
 
