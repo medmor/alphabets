@@ -5,7 +5,7 @@ export default class SoundManager{
 
   playMusic(){
     this.music = new Howl({
-      src: ['https://stackblitz.com/edit/alphabets?file=sounds%2Fwin.wav'],
+      src: ['https://funksyou.com/fileDownload/Songs/128/13080.mp3'],
       });
     this.music.on('load', ()=>{console.log(5)})
     this.music.play();
