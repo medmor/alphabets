@@ -37,7 +37,10 @@ class Game extends PIXI.Application{
 
   inputHandler(event: KeyboardEvent){
     if(this.alpha.isEqual(event.keyCode)){
+      this.sound.win.play()
       this.alpha.setAlpha()
+    }else{
+      this.sound.lose.play()
     }
   }
 
