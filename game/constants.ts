@@ -1,2 +1,4 @@
-const WIDTH = 600
-const HEIGHT = 400
+export default class {
+  WIDTH = 600
+  HEIGHT = 400
+}
