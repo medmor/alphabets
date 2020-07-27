@@ -15,9 +15,11 @@ class Game extends PIXI.Application{
   constructor(){
     super({width: 600, height: 400, backgroundColor: 0x00BDF0})
 
-    this.intro = new Intro(this.renderer)
-    this.intro.addToStage(this.stage)
+    this.intro = new Intro(this, this.startGame.bind(this))
+    this.intro.addToStage()
+  }
 
+  startGame(){
     this.stage.addChild(this.alpha)
 
     this.ticker.add(this.loop.bind(this))
