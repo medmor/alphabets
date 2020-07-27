@@ -5,13 +5,13 @@ class Alpha extends PIXI.Text {
   alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   constructor(public startX: number, public startY: number){
-    super("", {color:0x00});
+    super("", {color:0x0fe2c0, fontFamilly: "Bold", fontSize: 100});
     this.setAlpha()
+    this.anchor.set(.5)
   }
 
   fall(speed: number){
     this.y += speed
-    if(this.y > 410) this.setAlpha()
   }
 
   setAlpha(){

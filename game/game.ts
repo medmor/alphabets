@@ -20,6 +20,8 @@ class Game extends PIXI.Application{
   }
 
   startGame(){
+    this.sound.load()
+
     this.stage.addChild(this.alpha)
 
     this.ticker.add(this.loop.bind(this))
@@ -28,11 +30,15 @@ class Game extends PIXI.Application{
 
   loop(){
     this.alpha.fall(2)
+    if(this.alpha.y > 410) {
+      this.alpha.setAlpha()
+    }
   }
 
   inputHandler(event: KeyboardEvent){
-    this.alpha.setAlpha()
-    this.sound.playMusic()
+    if(this.alpha.isEqual(event.keyCode)){
+      this.alpha.setAlpha()
+    }
   }
 
 }
