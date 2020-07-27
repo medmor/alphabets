@@ -1,4 +1,4 @@
 export default class {
-  WIDTH = 600
-  HEIGHT = 400
+  static WIDTH = 600
+  static HEIGHT = 400
 }

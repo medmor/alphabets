@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js"
-import constants from "./constants"
+import Consts from "./constants"
 import Intro from "./intro"
 import Alpha from "./alpha"
 import Input from "./input"
@@ -13,7 +13,7 @@ class Game extends PIXI.Application{
   sound = new SoundManager()
 
   constructor(){
-    super({width: constants.WIDTH, height: constants.HEIGHT, backgroundColor: 0x00BDF0})
+    super({width: Consts.WIDTH, height: Consts.HEIGHT, backgroundColor: 0x00BDF0})
 
     this.intro = new Intro(this, this.startGame.bind(this))
     this.intro.addToStage()
