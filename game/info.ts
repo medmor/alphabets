@@ -12,17 +12,17 @@ export default class {
 
   resetValues(){
     this.setScore(0)
-    this.setTime(0.0)
+    this.setTime(1)
   }
 
   setPositions(){
 
     this.time.anchor.set(.5)
-    this.time.x = 100
+    this.time.x = 500
     this.time.y = 50
 
     this.score.anchor.set(.5)
-    this.score.x = 500
+    this.score.x = 100
     this.score.y = 50
   }
 
@@ -31,7 +31,10 @@ export default class {
   }
 
   setTime(value: number){
-    this.time.text = value.toString()
+    let minutes = Math.floor(value / 60000);
+    let seconds = (value % 60000) / 1000;
+    let secondsf = seconds.toFixed(1)
+    this.time.text = minutes + ":" + (parseInt(secondsf) < 10 ? '0' : '') + secondsf;
   }
 
   addToStage(stage: PIXI.Container){

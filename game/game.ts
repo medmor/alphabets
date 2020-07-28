@@ -16,6 +16,7 @@ class Game extends PIXI.Application{
 
   score: number = 0
   time = 0
+  startTime = 0
 
   constructor(){
     super({width: Consts.WIDTH, height: Consts.HEIGHT, backgroundColor: 0x00BDF0})
@@ -25,6 +26,7 @@ class Game extends PIXI.Application{
   }
 
   startGame(){
+    this.startTime = Date.now()
     this.sound.load()
 
     this.stage.addChild(this.alpha)
@@ -35,7 +37,8 @@ class Game extends PIXI.Application{
     this.ticker.start()
   }
 
-  loop(){
+  loop(time){
+    this.info.setTime(Date.now() - this.startTime)
     this.alpha.fall(2)
     if(this.alpha.y > 410) {
       this.alpha.setAlpha()
