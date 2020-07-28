@@ -19,7 +19,6 @@ export default class SoundManager{
 
     this.music.on('load', ()=>{
       this.music.play()
-      console.log(this.win.volume())
     })
   }
 

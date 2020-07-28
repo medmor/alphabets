@@ -4,6 +4,7 @@ import Intro from "./intro"
 import Alpha from "./alpha"
 import Input from "./input"
 import SoundManager from "./sound"
+import Info from "./info"
 
 
 class Game extends PIXI.Application{
@@ -11,6 +12,10 @@ class Game extends PIXI.Application{
   alpha = new Alpha(300, -100)
   input = new Input(this.inputHandler.bind(this))
   sound = new SoundManager()
+  info = new Info()
+
+  score: number = 0
+  time = 0
 
   constructor(){
     super({width: Consts.WIDTH, height: Consts.HEIGHT, backgroundColor: 0x00BDF0})
@@ -23,6 +28,8 @@ class Game extends PIXI.Application{
     this.sound.load()
 
     this.stage.addChild(this.alpha)
+
+    this.info.addToStage(this.stage)
 
     this.ticker.add(this.loop.bind(this))
     this.ticker.start()
@@ -39,8 +46,10 @@ class Game extends PIXI.Application{
     if(this.alpha.isEqual(event.keyCode)){
       this.sound.win.play()
       this.alpha.setAlpha()
+      this.info.setScore(this.score+=10)
     }else{
       this.sound.lose.play()
+      this.info.setScore(this.score-=4)
     }
   }
 
