@@ -43,9 +43,10 @@ class Game extends PIXI.Application{
   loop(time){
     this.info.setTime(Date.now() - this.startTime)
     this.alpha.fall(this.fallSpeed)
-    if(this.alpha.y > 410) {
+    if(this.alpha.y > 410 && !this.win) {
       this.alpha.setAlpha()
       this.info.setScore(this.score-=10)
+      this.sound.lose.play()
     }
   }
 
@@ -56,7 +57,7 @@ class Game extends PIXI.Application{
         this.alpha.setAlpha()
         this.info.setScore(this.score+=10)
         this.fallSpeed += .01
-        if(this.score >= 150) {
+        if(this.score >= 1000) {
           this.win = true
           this.alpha.text = "YOU WIN"
           this.info.removeFromStage(this.stage)
