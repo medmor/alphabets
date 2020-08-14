@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js"
+import Sound from './sound'
 
 export default class Intro{
   graphics = new PIXI.Graphics();
@@ -66,6 +67,10 @@ export default class Intro{
   }
 
   onClick(){
+    Sound.load(this.soundLoadCallback.bind(this))
+  }
+
+  soundLoadCallback(){
     this.removeFromStage()
     this.clickCallback()
   }

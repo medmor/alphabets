@@ -3,7 +3,7 @@ import Consts from "./constants"
 import Intro from "./intro"
 import Alpha from "./alpha"
 import Input from "./input"
-import SoundManager from "./sound"
+import Sound from "./sound"
 import Info from "./info"
 
 
@@ -11,7 +11,7 @@ class Game extends PIXI.Application{
   intro : Intro = null
   alpha = new Alpha(300, -50)
   input = new Input(this.inputHandler.bind(this))
-  sound = new SoundManager()
+  //dsound = new SoundManager()
   info = new Info()
 
   score: number = 0
@@ -29,8 +29,8 @@ class Game extends PIXI.Application{
   }
 
   startGame(){
+    
     this.startTime = Date.now()
-    this.sound.load()
 
     this.stage.addChild(this.alpha)
 
@@ -46,14 +46,14 @@ class Game extends PIXI.Application{
     if(this.alpha.y > 410 && !this.win) {
       this.alpha.setAlpha()
       this.info.setScore(this.score-=10)
-      this.sound.lose.play()
+      Sound.lose.play()
     }
   }
 
   inputHandler(event: KeyboardEvent){
     if(event.keyCode > 64 && event.keyCode < 92 && !this.win) {
       if(this.alpha.isEqual(event.keyCode)){
-        this.sound.win.play()
+        Sound.win.play()
         this.alpha.setAlpha()
         this.info.setScore(this.score+=10)
         this.fallSpeed += .01
@@ -63,7 +63,7 @@ class Game extends PIXI.Application{
           this.info.removeFromStage(this.stage)
         }
       }else{
-        this.sound.lose.play()
+        Sound.lose.play()
         this.info.setScore(this.score-=5)
       }
     }
