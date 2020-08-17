@@ -64,7 +64,7 @@ class Game extends PIXI.Application{
         }
       }else{
         Sound.lose.play()
-        this.info.setScore(this.score-=5)
+        this.info.setScore(this.score-=10)
       }
     }
 
