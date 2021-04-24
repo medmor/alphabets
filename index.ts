@@ -1,6 +1,6 @@
 // Import stylesheets
 import './style.css';
-import game from "./game/game"
+import game from "./src/game/game"
 
 
 // Write TypeScript code!
